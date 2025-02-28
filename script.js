@@ -1,7 +1,7 @@
 // Global variables and functions
 var ledOverlay = document.getElementById('ledOverlay');
 var frameOverlay = document.getElementById('frameOverlay');
-var currentAnimation = 'blink'; // Default animation is blink
+var currentAnimation = 'fade'; // Default animation is blink
 var strongMode = false;
 var lightsOn = true; // Default lights are on
 var ledCountPerSide = 40; // LEDs for full border coverage
@@ -200,4 +200,4 @@ led.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
 // Initialize LEDs when DOM is ready
 createLEDs();
-setAnimation('blink'); // Set default animation to blink
+setAnimation('fade'); // Set default animation to blink

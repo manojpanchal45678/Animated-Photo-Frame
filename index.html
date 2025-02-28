@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Advanced Responsive LED Photo Frame</title>
+
+</head>
+<body>
+  <div class="container">
+    <!-- Info Icon -->
+    <div class="info-icon" onclick="showInfo()">ℹ️</div>
+
+    <!-- Info Modal -->
+    <div class="info-modal" id="infoModal">
+      <h2>Welcome To Panchal Photo Studio</h2>
+      <p>This Photo Frame is made by Mr. Manoj Panchal</p>
+      <p>Contact Us: +91 8462079917</p>
+      <button onclick="hideInfo()">Close</button>
+    </div>
+
+    <!-- Dark/Light Mode Toggle Button -->
+    <button class="mode-toggle" onclick="toggleMode()">Dark Mode</button>
+
+    <!-- Photo frame in center -->
+    <div class="frame-container">
+      <img id="photo" src="sawariya.jpg" alt="Photo Frame" />
+      <div class="frame-overlay" id="frameOverlay"></div>
+      <div class="led-overlay" id="ledOverlay"></div>
+    </div>
+
+    <!-- Right button panel (Animation controls) -->
+    <div class="button-panel" id="animPanelRight">
+      <!-- Color buttons -->
+      <button style="background-color: red;" onclick="setColor('red')">Red</button>
+      <button style="background-color: green;" onclick="setColor('green')">Green</button>
+      <button style="background-color: blue;" onclick="setColor('blue')">Blue</button>
+      <button style="background-image: linear-gradient(#e9c1b6,#7c98e5);" onclick="setColor('white')">White</button>
+      <button style="background-color: yellow; color:#000;" onclick="setColor('yellow')">Yellow</button>
+      <button style="background-color: cyan; color:#000;" onclick="setColor('cyan')">Cyan</button>
+      <button style="background-color: orange;" onclick="setColor('orange')">Orange</button>
+      <button style="background-color: magenta;" onclick="setColor('magenta')">Magenta</button>
+      <button style="background-color: teal;" onclick="setColor('teal')">Teal</button>
+      <!-- Animation controls -->
+      <button style="background-image: linear-gradient(#f83600,#f9d423);" onclick="setAnimation('fade')">Fade</button>
+      <button style="background-image:linear-gradient(#f83600,#f9d423);" onclick="setAnimation('blink')">Blink</button>
+      <button style="background-image:linear-gradient(#f83600,#f9d423);" onclick="mixLight()">Mix-Light</button>
+  <button style="background-image: linear-gradient(#f83600,#f9d423);" onclick="allMix()">All-Mix</button>
+      <button style="background-image: linear-gradient(#f83600,#f9d423);" onclick="toggleStrength()">Strength</button>
+      <!-- On/Off Button -->
+      <button style="background-color:rgba(0, 0, 0, 0.474); color: #ffffff;" onclick="toggleLights()" id="lightsBtn">Lights On</button>
+      <!-- Light Intensity Controls -->
+      <button style="background-image: linear-gradient(#f83600,#f9d423);" onclick="decreaseIntensity()">-</button>
+      <button style="background-image: linear-gradient(#f83600,#f9d423);" onclick="increaseIntensity()">+</button>
+      <!-- Change Frame Button -->
+      <button style="background-image: linear-gradient(#024fc2,#b712ba);" onclick="changeFrame()">Change Frame</button>
+    </div>
+  </div>
+
+  <!-- Image Gallery -->
+  <div class="chang"><h2 class="cp">Change Photos</h2></div>
+  <div class="gallery">
+
+    <!-- Add your 15 image paths here -->
+    <img src="Photos/krishna.jpg" alt="Image 1" onclick="changePhoto('Photos/krishna.jpg')" />
+    <img src="sawariya.jpg" alt="Image 16" onclick="changePhoto('sawariya.jpg')" />
+    <img src="Photos/krishna02.jpg" alt="Image 2" onclick="changePhoto('Photos/krishna02.jpg')" />
+    <img src="photos/krishna03.jpg" alt="Image 3" onclick="changePhoto('photos/krishna03.jpg')" />
+    <img src="Photos/mahadev-parvati.jpg" alt="Image 4" onclick="changePhoto('Photos/mahadev-parvati.jpg')" />
+    <img src="Photos/radheKirshna.jpg" alt="Image 5" onclick="changePhoto('Photos/radheKirshna.jpg')" />
+    <img src="Photos/sawariya01.jpg" alt="Image 6" onclick="changePhoto('Photos/sawariya01.jpg')" />
+    <img src="Photos/sawariya02.jpg" alt="Image 7" onclick="changePhoto('Photos/sawariya02.jpg')" />
+    <img src="Photos/sawariya03.jpg" alt="Image 8" onclick="changePhoto('Photos/sawariya03.jpg')" />
+    <img src="Photos/sawariya04.jpg" alt="Image 9" onclick="changePhoto('Photos/sawariya04.jpg')" />
+    <img src="Photos/sawariya05.jpg" alt="Image 10" onclick="changePhoto('Photos/sawariya05.jpg')" />
+    <img src="Photos/sawariya06.jpg" alt="Image 11" onclick="changePhoto('Photos/sawariya06.jpg')" />
+    <img src="Photos/sawariya07.jpg" alt="Image 12" onclick="changePhoto('Photos/sawariya07.jpg')" />
+    <img src="Photos/sawariya08.jpg" alt="Image 13" onclick="changePhoto('Photos/sawariya08.jpg')" />
+    <img src="Photos/shreenathji1.jpg" alt="Image 14" onclick="changePhoto('Photos/shreenathji1.jpg')" />
+    <img src="Photos/shreenathji2.jpg" alt="Image 15" onclick="changePhoto('Photos/shreenathji2.jpg')" />
+    <img src="Photos/khatushyam.jpg" alt="Image 16" onclick="changePhoto('Photos/khatushyam.jpg')" />
+    <img src="Photos/khatushyam01.jpg" alt="Image 17" onclick="changePhoto('Photos/khatushyam01.jpg')" />
+    <img src="Photos/khatushyam02.jpg" alt="Image 18" onclick="changePhoto('Photos/khatushyam02.jpg')" />
+    <img src="Photos/khatushyam03.jpg" alt="Image 19" onclick="changePhoto('Photos/khatushyam03.jpg')" />
+    <img src="Photos/khatushyam04.jpg" alt="Image 20" onclick="changePhoto('Photos/khatushyam04.jpg')" />
+    <img src="Photos/khatushyam05.jpg" alt="Image 21" onclick="changePhoto('Photos/khatushyam05.jpg')" />
+    <img src="Photos/khatushyam06.jpg" alt="Image 22" onclick="changePhoto('Photos/khatushyam06.jpg')" />
+    <img src="Photos/khatushyam07.jpg" alt="Image 23" onclick="changePhoto('Photos/khatushyam07.jpg')" />
+    <img src="Photos/khatushyam08.jpg" alt="Image 24" onclick="changePhoto('Photos/khatushyam08.jpg')" />
+    <img src="Photos/khatushyam09.jpg" alt="Image 25" onclick="changePhoto('Photos/khatushyam09.jpg')" />
+    <img src="Photos/khatushyam10.jpg" alt="Image 26" onclick="changePhoto('Photos/khatushyam10.jpg')" />
+    <img src="Photos/khatushyam11.jpg" alt="Image 27" onclick="changePhoto('Photos/khatushyam11.jpg')" />
+    <img src="Photos/khatushyam2.jpg" alt="Image 28" onclick="changePhoto('Photos/khatushyam2.jpg')" />
+    <img src="Photos/khatushyam3.jpg" alt="Image 29" onclick="changePhoto('Photos/khatushyam3.jpg')" />
+    <img src="Photos/khatushyam4.jpg" alt="Image 30" onclick="changePhoto('Photos/khatushyam04.jpg')" />
+    <img src="Photos/khatushyam5.jpg" alt="Image 31" onclick="changePhoto('Photos/khatushyam5.jpg')" />
+    
+  </div>
+   <script src="script.js"></script>
+</body>
+</html>

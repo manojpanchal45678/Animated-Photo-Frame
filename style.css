@@ -1,0 +1,264 @@
+:root {
+    --led-color: red;
+    --frame-bg: #222; /* Default frame background */
+    --body-bg: #393737; /* Default body background */
+    --text-color: #fff; /* Default text color */
+    --light-intensity: 50px; /* Default light intensity (lower value) */
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .chang{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 14px;
+    width: 20rem;
+    height: 4rem;
+    background-image:linear-gradient(rgb(116, 116, 156),rgb(82, 82, 135)) ;
+  }
+  .cp{
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size:40px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    max-width: 1200px;
+    padding-top: 50px;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: space-between; /* Space between frame and buttons */
+    position: relative;
+    margin-bottom: 20px; /* Space between frame and gallery */
+  }
+  /* Info Icon */
+  .info-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #e5ff00;
+  }
+  /* Info Modal */
+  .info-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    color: #fff;
+    text-align: center;
+  }
+  .info-modal h2 {
+    margin: 0 0 10px;
+  }
+  .info-modal p {
+    margin: 5px 0;
+  }
+  .info-modal button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #555;
+    color: #fff;
+    cursor: pointer;
+  }
+  /* Dark/Light Mode Toggle Button */
+  .mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: white;
+    color: #000000;
+    border: 2px solid black;
+  }
+  /* Left and right button panels */
+  .button-panel {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 columns for buttons */
+    gap: 10px;
+    padding: 10px;
+    width: 300px; /* Fixed width for buttons */
+  }
+  .button-panel button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+  }
+  /* Main photo frame container */
+  .frame-container {
+position: relative;
+width: 500px; /* Larger frame for desktop */
+height: 600px; /* Larger frame for desktop */
+margin: 10px;
+overflow: hidden;
+background-color: var(--frame-bg);
+flex-shrink: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+  .frame-container img {
+width: 100%;
+height: 100%;
+object-fit: cover; /* Photo will cover the frame */
+display: block;
+}
+  /* Frame overlay */ 
+  .frame-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: 2;
+background-size: 500px 600px; /* Exact frame size */
+background-position: center; /* Center the frame *//* Frame will fit inside the container */
+background-repeat: no-repeat;
+/* Center the frame */
+background-image: url('Frames/wood-frame.webp'); /* Default frame image */
+}
+  /* LED overlay on photo frame */
+  .led-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .led {
+    position: absolute;
+    width: 20px; /* Slightly larger LEDs */
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--led-color);
+    box-shadow: 0 0 var(--light-intensity) 20px var(--led-color); /* Dynamic glow */
+    filter: blur(2px); /* Add blur to the glow */
+  }
+
+  @media (max-width: 768px) {
+.frame-overlay {
+  background-size: 100% 100%; /* Frame will cover the entire container */
+}
+}
+
+@keyframes fadeEffect {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+
+@keyframes blinkEffect {
+0% { opacity: 1; }
+50% { opacity: 0.5; }
+100% { opacity: 1; }
+}
+  /* Fade and blink animations for individual LED */
+  @keyframes fadeEffect {
+    0% { background-color: var(--led-color); box-shadow: 0 0 var(--light-intensity) 20px var(--led-color); }
+    20% { background-color: white; box-shadow: 0 0 var(--light-intensity) 20px white; }
+    40% { background-color: rgb(251, 255, 0); box-shadow: 0 0 var(--light-intensity) 20px rgb(255, 251, 0); }
+    60% { background-color: red; box-shadow: 0 0 var(--light-intensity) 20px red; }
+    80% { background-color: rgb(128, 0, 100); box-shadow: 0 0 var(--light-intensity) 20px rgb(127, 0, 108); }
+    100% { background-color: var(--led-color); box-shadow: 0 0 var(--light-intensity) 20px var(--led-color); }
+  }
+  @keyframes blinkEffect {
+    0% { background-color: var(--led-color); box-shadow: 0 0 var(--light-intensity) 20px var(--led-color); opacity: 1; }
+    10% { background-color: blue; box-shadow: 0 0 var(--light-intensity) 20px blue; opacity: 1; }
+    20% { background-color: rgb(98, 255, 0); box-shadow: 0 0 var(--light-intensity) 20px rgb(98, 255, 0); opacity: 1; }
+    30% { background-color: blue; box-shadow: 0 0 var(--light-intensity) 20px blue; opacity: 1; }
+    40% { background-color: rgb(242, 0, 255); box-shadow: 0 0 var(--light-intensity) 20px rgb(242, 0, 255); opacity: 1; }
+    50% { background-color: white; box-shadow: 0 0 var(--light-intensity) 20px white; opacity: 1; }
+    60% { background-color: rgb(242, 0, 255); box-shadow: 0 0 var(--light-intensity) 20px rgb(242, 0, 255); opacity: 1; }
+    70% { background-color: rgb(0, 221, 255); box-shadow: 0 0 var(--light-intensity) 20px rgb(0, 213, 255); opacity: 1; }
+    80% { background-color: rgb(255, 0, 0); box-shadow: 0 0 var(--light-intensity) 20px rgb(255, 0, 0); opacity: 1; }
+    90% { background-color: rgb(234, 255, 0); box-shadow: 0 0 var(--light-intensity) 20px rgb(234, 255, 0); opacity: 1; }
+    100% { background-color: var(--led-color); box-shadow: 0 0 var(--light-intensity) 20px var(--led-color); opacity: 1; }
+  }
+  /* Animation strength class (increases intensity) */
+  .strong {
+    box-shadow: 0 0 calc(var(--light-intensity) * 1.5) 40px currentColor !important; /* Even stronger glow */
+  }
+  /* Image Gallery */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns for desktop */
+    gap: 10px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .gallery img {
+    width: 100%;
+    height: 100px; /* Fixed height for small images */
+    object-fit: cover;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .gallery img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    border-color: var(--led-color);
+  }
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .frame-container {
+      width: 320px; /* Smaller frame for mobile */
+      height: 420px;
+    }
+    .button-panel {
+      width: 100%;
+      max-width: 400px;
+    }
+    .mode-toggle {
+      top: 5px;
+      right: 5px;
+      padding: 8px;
+    }
+    .gallery {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns for mobile */
+    }
+  }
